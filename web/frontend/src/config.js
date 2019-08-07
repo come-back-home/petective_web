@@ -2,8 +2,8 @@ const config = {
   appName: 'Petective',
   apiUrl: 'http://0.0.0.0:7001',
   imageUrl: 'http://0.0.0.0',
-  debug: false,
-  production: true
+  debug: true,
+  production: false
 };
 if (config.production) {
   config.appName = 'Petective';

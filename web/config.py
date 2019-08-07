@@ -44,5 +44,6 @@ class BaseConfig(object):
     FREEPASS_PASSWORD = os.environ['FREEPASS_PASSWORD']
     SIGNUP_SECRET_KEY = os.environ['SIGNUP_SECRET_KEY']
     RESET_PASSWORD_SECRET_KEY = os.environ['RESET_PASSWORD_SECRET_KEY']
+    APP_HOST = os.environ['APP_HOST']
     APP_PORT = os.environ['APP_PORT']
     LOGGER_ROOT_PATH = os.environ['LOGGER_ROOT_PATH']
