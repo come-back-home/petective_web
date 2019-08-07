@@ -141,7 +141,7 @@ class Location(BaseModel, db.Model):
     __tablename__ = 'location'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, db.ForeignKey('user.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String(500))
     address = Column(String(1000))
     shelter = Column(Integer)  # 0: Not shelter, 1: Shelter
@@ -159,7 +159,7 @@ class MyPet(BaseModel, db.Model):
     __tablename__ = 'mypet'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
+    user_id = Column(Integer, ForeignKey('users.id'))
     location_id = Column(Integer, ForeignKey('location.id'))
     name = Column(String(300))
     sex = Column(String(10))  # "Male" or "Female"
