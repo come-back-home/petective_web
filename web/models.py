@@ -141,14 +141,14 @@ class Location(BaseModel, db.Model):
     __tablename__ = 'location'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    #user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String(500))
     address = Column(String(1000))
     shelter = Column(Integer)  # 0: Not shelter, 1: Shelter
     created_at = Column(DateTime)
 
-    def __init__(self, user_id, name, address, shelter):
-        self.user_id = user_id
+    def __init__(self, name, address, shelter):
+        #self.user_id = user_id
         self.name = name
         self.address = address
         self.shelter = shelter
