@@ -1,0 +1,64 @@
+nginx:
+  restart: always
+  build: ./nginx
+  ports:
+    - "50080:80"
+    - "50443:443"
+  volumes:
+    - ./certs:/etc/certs
+  volumes_from:
+    - web
+  links:
+    - web:web
+
+# nginx-ssl-proxy:
+#   restart: always
+#   build: ./nginx-ssl-proxy
+#   environment:
+#     UPSTREAM: 0.0.0.0:8000
+#     SERVERNAME: localhost
+#   volumes_from:
+#     - web
+#   ports:
+#     - "80:80"
+#     - "443:443"
+#   volumes:
+#     - "/etc/letsencrypt"
+#   links:
+#     - web:web
+
+web:
+  restart: always
+  build: ./web
+  command: /usr/local/bin/gunicorn -w 4 -b :8000 app:app
+  expose:
+    - "8000"
+  volumes:
+    - ./images:/app/static/images
+    - ./web/static/assets:/app/static/assets
+    - ./web/static/css:/app/static/css
+    - ./web/static/js:/app/static/js
+    - ./web/static/media:/app/static/media
+  env_file: .env
+  links:
+    - postgres:postgres
+    - redis
+
+data:
+  image: postgres:latest
+  volumes:
+    - ./data:/var/lib/postgresql/data
+  command: "true"
+
+postgres:
+  restart: always
+  image: postgres:latest
+  volumes_from:
+    - data
+  ports:
+    - "5432:5432"
+
+redis:
+  image: redis
+  volumes:
+    - ./redis_data:/data

@@ -1,0 +1,36 @@
+version: 2.0
+
+jobs:
+  Python_3.6:
+    docker:
+      - image: circleci/python:3.6
+    working_directory: ~/fundus_screening/web
+    steps: &steps
+      - checkout
+      - run: sudo pip install -r web/requirements.txt
+      - run: sudo pip install flake8
+      - run: flake8 --exclude mongo_data,nginx,redis_data,migrations,venv,__init__.py,__pycache__,frontend web
+  Javascript:
+    docker:
+      - image: circleci/node:10.13.0-jessie
+    working_directory: ~/fundus_screening/web/frontend
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "web/frontend/package.json" }}
+      - run: sudo chown -R $USER:$USER . && cd web/frontend && sudo yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "web/frontend/package.json" }}
+          paths:
+            - node_modules
+      - run: sudo npm install eslint -g
+      - run: sudo npm install babel-eslint -g
+      - run: sudo npm install eslint-plugin-react -g
+      - run: cd web/frontend/src && eslint --ext .jsx --ext .js .
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - Python_3.6
+      - Javascript

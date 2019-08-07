@@ -1,0 +1,61 @@
+$color-background: #0e2327;
+$color-base: rgba(58, 174, 158, 1);
+$color-black: rgba(0, 0, 0, 1);
+$color-white: rgba(255, 255, 255, 1);
+.navContainer {
+    background: $color-background;
+    width: 100%;
+    .logo {
+    }
+    .userInfo {
+        float: right;
+        .doneCount {
+            color: $color-base;
+            font-size: 13pt;
+            font-weight: 600;
+        }
+        .username {
+            color: $color-white;
+        }
+    }
+    .settings {
+        float: right;
+        color: $color-white;
+        margin-right: 10px;
+        .ant-menu-submenu-title {
+            padding: 0 0 0 10px;
+        }
+        &.ant-menu-submenu > .ant-menu {
+            background: $color-background !important;
+            &.ant-menu-sub {
+                &.ant-menu-vertical {
+                }
+            }
+        }
+    }
+
+}
+.ant-menu-horizontal {
+    border-bottom: 1px solid $color-background;
+}
+.settings {
+    &.ant-menu-submenu-popup {
+        background: $color-background;
+    }
+    &.ant-menu-submenu > .ant-menu {
+        background: $color-background;
+        .ant-menu-item-group {
+            .ant-menu-item-group-title {
+                color: #bebebe;
+            }
+            .ant-menu-item {
+                a {
+                    color: white;
+                }
+                a:hover {
+                    color: $color-base;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Spoqa Han Sans";
+  font-weight: 400;
+  src: url(./SpoqaHanSans-Light.woff)
+       format("woff");
+}
+@font-face {
+  font-family: "Spoqa Han Sans";
+  font-weight: 500;
+  src: url(./SpoqaHanSans-Regular.woff)
+       format("woff");
+}
+@font-face {
+  font-family: "Spoqa Han Sans";
+  font-weight: 700;
+  src: url(./SpoqaHanSans-Bold.woff)
+       format("woff");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 400;
+  src: url(./SourceSansPro-Light.woff)
+       format("woff");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 500;
+  src: url(./SourceSansPro-Regular.woff)
+       format("woff");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  src: url(./SourceSansPro-SemiBold.woff)
+       format("woff");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: 700;
+  src: url(./SourceSansPro-Bold.woff)
+       format("woff");
+}

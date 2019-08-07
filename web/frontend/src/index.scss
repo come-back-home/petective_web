@@ -1,0 +1,28 @@
+@import '_styles/antd.scss';
+/*@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700');*/
+@import './fonts/webfont.normal.css';
+
+* { font-family: 'Spoqa Han Sans', 'Source Sans Pro', sans-serif !important;}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Spoqa Han Sans', 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root {
+    width: 100%;
+    height: 100%;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.ant-card-body {
+    padding: 20px 10px;
+}

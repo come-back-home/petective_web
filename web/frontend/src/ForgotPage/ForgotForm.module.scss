@@ -1,0 +1,33 @@
+@import '../_styles/utils.scss';
+.reset-form {
+    margin: 0 auto;
+    svg {
+        color: rgba(255, 255, 255, 0.2);
+    }
+    input {
+        background: #0a181b;
+        border: 1px solid #0a181b;
+        color: white;
+        height: 40px;
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+        &:not(:first-child) {
+            padding-left: 40px !important;
+        }
+        &:hover {
+            border: 1px solid $primary-color;
+        }
+        &:focus {
+            border: 1px solid $primary-color;
+        }
+    }
+    .login-button {
+        float: left;
+    }
+    .reset-button {
+        width: 100%;
+        height: 40px;
+        margin-top: 10px;
+    }
+}

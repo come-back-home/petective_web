@@ -1,0 +1,16 @@
+.wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  .alert {
+    color: black;
+    &.alert-danger {
+      color: #ff8f8f;
+    }
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+}
