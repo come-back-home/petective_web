@@ -1,3 +1,7 @@
+"""
+(c) 2019 Minwoo Choo All rights reserved. :: Petective
+"""
+
 import os
 import logger
 from datetime import datetime
@@ -15,7 +19,7 @@ from flask_jwt_extended import (
     jwt_required, jwt_refresh_token_required, get_jwt_identity,
     get_jti, get_raw_jwt)
 from models import (
-    db, User, LoginSession
+    db, User, LoginSession, Images, SequentialImages, Location, MyPet
 )
 from serializer import (
     UserSchema, LoginSessionSchema, LocationSchema
@@ -166,6 +170,9 @@ class UserRegister(Resource):
             name = data['name'].strip()
             email = data['email'].strip()
             password = data['password'].strip()
+            phone = "010-0000-0000"  # data['phone'].strip()
+            address = "test"  # data['address'].strip()
+            shelter = 0  # data['shelter'].strip()
             signup_key = data['secretKey'].strip()
         except Exception as e:
             print(e)
@@ -179,7 +186,9 @@ class UserRegister(Resource):
         if user:
             abort(400, 'User created already!')
         else:
-            new_user = User(name, email, password)
+            new_location = Location(name, address, shelter)
+            db.session.add(new_location)
+            new_user = User(name, email, phone, new_location.id, shelter, password)
             db.session.add(new_user)
             try:
                 db.session.commit()
