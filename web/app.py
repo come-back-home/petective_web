@@ -188,6 +188,11 @@ class UserRegister(Resource):
         else:
             new_location = Location(name, address, shelter)
             db.session.add(new_location)
+            try:
+                db.session.commit()
+            except Exception as e:
+                abort(500, e)
+
             new_user = User(name, email, phone, new_location.id, shelter, password)
             db.session.add(new_user)
             try:
