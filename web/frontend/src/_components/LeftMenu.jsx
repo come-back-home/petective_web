@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { config } from '../config'
 import { TestAll } from "./TestAll";
+import { Page1_1 } from "./Page1_1";
 
 import classNames from 'classnames/bind'
 //import styles from '../_styles/antd.scss'
@@ -32,6 +33,9 @@ class LeftMenu extends React.Component {
         case '1':
           this.setState({contents: <TestAll/>});
           break;
+        case '2_1':
+          this.setState({contents: <Page1_1/>});
+          break;
       }
     }
   };
@@ -59,6 +63,7 @@ class LeftMenu extends React.Component {
               }
             >
               <Menu.Item key="1" onClick={this.menu_click}>Test All</Menu.Item>
+              <Menu.Item key="2_1" onClick={this.menu_click}>Page 1_1</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
