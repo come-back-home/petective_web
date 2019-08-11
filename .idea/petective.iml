@@ -5,11 +5,12 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/web/frontend" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/web" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/frontend" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/frontend/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (petective)" jdkType="Python SDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

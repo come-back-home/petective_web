@@ -169,9 +169,9 @@ class UserRegister(Resource):
         try:
             name = data['name'].strip()
             email = data['email'].strip()
+            phone = "010-0000-0000" # phone['phone'].strip()
+            address = "yoon_test" # data['address'].strip()
             password = data['password'].strip()
-            phone = "010-0000-0000"  # data['phone'].strip()
-            address = "test"  # data['address'].strip()
             shelter = 0  # data['shelter'].strip()
             signup_key = data['secretKey'].strip()
         except Exception as e:
@@ -193,7 +193,7 @@ class UserRegister(Resource):
             except Exception as e:
                 abort(500, e)
 
-            new_user = User(name, email, phone, new_location.id, shelter, password)
+            new_user = User(name, email, phone, new_location.id, shelter, password) ##add address
             db.session.add(new_user)
             try:
                 db.session.commit()

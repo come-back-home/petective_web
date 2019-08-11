@@ -51,13 +51,14 @@ class User(BaseModel, db.Model):
     name = Column(String(300))
     email = Column(String(300))
     phone = Column(String(100))
+    #address = Column(String(300))
     location_id = Column(Integer, ForeignKey('location.id'))
     shelter = Column(Integer)  # 0: Not shelter, 1: Shelter
     password = Column(String(300))
     created_at = Column(DateTime)
     level = Column(Integer)
 
-    def __init__(self, name, email, phone, location_id, shelter, password, level=0):
+    def __init__(self, name, email, phone, address, location_id, shelter, password, level=0):
         self.name = name
         self.email = email
         self.phone = phone
