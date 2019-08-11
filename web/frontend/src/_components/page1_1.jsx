@@ -63,4 +63,3 @@ function mapStateToProps(state) {
 const connectedContents = connect(mapStateToProps, {
 })(page1_1);
 export { connectedContents as page1_1 }
-
