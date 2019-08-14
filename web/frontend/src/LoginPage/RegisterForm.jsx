@@ -17,6 +17,8 @@ class RegisterForm extends React.Component {
     this.state = {
       name: '',
       email: '',
+      phone: '',
+      address: '',
       password: '',
       secretKey: '',
       submitted: false
@@ -37,10 +39,10 @@ class RegisterForm extends React.Component {
     this.setState({ submitted: true });
     this.props.form.validateFields((err) => {
       if (!err) {
-        const { name, email, password, secretKey } = this.state;
+        const { name, email, phone, address, password, secretKey } = this.state;
         const { dispatch } = this.props;
-        if (name && email && password && secretKey) {
-          dispatch(userActions.register(name, email, password, secretKey))
+        if (name && email && phone && address && password && secretKey) {
+          dispatch(userActions.register(name, email, phone, address, password, secretKey))
         }
       }
     })
@@ -69,6 +71,26 @@ class RegisterForm extends React.Component {
               onChange={this.handleChange}
               prefix={<Icon type='mail' style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder='Email' />
+          )}
+        </Form.Item>
+        <Form.Item style={{ margin: '0 0 6px 0' }}>
+          {getFieldDecorator('phone', {
+            rules: [{ required: true, message: 'Please input your phone number!' }]
+          })(
+            <Input name='phone'
+              onChange={this.handleChange}
+              prefix={<Icon type='phone' style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder='phone' />
+          )}
+        </Form.Item>
+        <Form.Item style={{ margin: '0 0 6px 0' }}>
+          {getFieldDecorator('address', {
+            rules: [{ required: true, message: 'Please input your address!' }]
+          })(
+            <Input name='address'
+              onChange={this.handleChange}
+              prefix={<Icon type='home' style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder='address' />
           )}
         </Form.Item>
         <Form.Item style={{ margin: '0 0 6px 0' }}>
