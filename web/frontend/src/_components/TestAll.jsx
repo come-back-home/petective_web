@@ -35,13 +35,27 @@ class TestAll extends React.Component {
   render() {
     return (
       <Typography>
-        <Title level={2} className={cx("test-title")}><Icon type="play-circle" /> Combined Test</Title>
+        <Title level={2} className={cx("test-title")}><Icon type="ant-design" /> Main </Title>
         <Button type="primary" className={cx("run-button")} loading={this.state.loading} onClick={this.enterLoading}>
           Run
         </Button>
 
         <div className={cx("test-wrapper")}>
-          <Title level={3}>1. Network Test</Title>
+          <Title level={3}># Pet Detective</Title>
+          <Steps current={0} className={cx("progress-wrapper")}>
+            <Step title="Waiting" description="Prepare scp/scu test." />
+            <Step title="In Progress" description="Pending..." />
+            <Step title="Finished" description="Done!" />
+          </Steps>
+        </div>
+
+        <Title level={2} className={cx("test-title")}><Icon type="ant-design" /> Main </Title>
+        <Button type="primary" className={cx("run-button")} loading={this.state.loading} onClick={this.enterLoading}>
+          Run
+        </Button>
+
+        <div className={cx("test-wrapper")}>
+          <Title level={3}># Pet Detective</Title>
           <Steps current={0} className={cx("progress-wrapper")}>
             <Step title="Waiting" description="Prepare scp/scu test." />
             <Step title="In Progress" description="Pending..." />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Icon, Typography, Steps, Button } from 'antd'
+import {Menu, Icon, Typography, Steps, Button, Tabs, Divider} from 'antd'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { config } from '../config'
@@ -9,6 +9,7 @@ import styles from './TestContent.scss'
 const cx = classNames.bind(styles);
 const { Title } = Typography;
 const { Step } = Steps;
+const { TabPane } = Tabs;
 
 class Page1_2 extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Page1_2 extends React.Component {
   state = {
     loading: false,
     iconLoading: false,
+    current: 0,
   };
 
   enterLoading = () => {
@@ -32,28 +34,90 @@ class Page1_2 extends React.Component {
     this.setState({ iconLoading: true });
   };
 
+  onChange = current => {
+    console.log('onChange:', current);
+    this.setState({ current });
+  };
+
+
+
   render() {
+    const { current } = this.state;
     return (
       <Typography>
-        <Title level={2} className={cx("test-title")}><Icon type="ant-design" /> How to use </Title>
-        <Button type="primary" className={cx("run-button")} loading={this.state.loading} onClick={this.enterLoading}>
-          Run
-        </Button>
+        <Title level={2} className={cx("test-title")}><Icon type="ant-design" /> How to Use </Title>
 
-        <div className={cx("test-wrapper")}>
+        {/*<div className={cx("test-wrapper")}>
           <Title level={3}>1. Network Test</Title>
-          <Steps current={0} className={cx("progress-wrapper")}>
-            <Step title="Upload pictures" description="Upload your lost dog, more than three." />
-            <Step title="In Progress" description="Pending..." />
-            <Step title="Finished" description="Done!" />
-            <Step title="Finished" description="Done!" />
+          <Steps current={current} className={cx("progress-wrapper")} defaultActiveKey="1" onChange={this.onChange}>
+            <Step title="Register" key="1" description="Upload your lost dog pictures, more than three" />
+            <Step title="In progress" key="2" description="Petective learns your pet" />
+            <Step title="Pending" description="Someone enrolls a lost dog" />
+            <Step title="Find!" description="If matching, we inform you" />
           </Steps>
+        </div>*/}
+        <br/><br/>
+        <Title level={3} className={cx("side-wrapper")}> I Lost</Title>
+        <Tabs defaultActiveKey="1" onChange={callback} className={cx("side-wrapper")}>
+          <TabPane tab="1" key="1">
+            <h1>Register</h1><br/>
+            1. Register your lost dog pictures on 'Register/I Lost' tab.<br/>
+            &ensp; &nbsp; You should upload more than three.<br/><br/>
+            2. Please complete the registration form about your pet.
+          </TabPane>
+          <TabPane tab="2" key="2">
+            <h1>In Progress</h1><br/>
+            1. Petective learns your pictures.<br/>
+            &ensp; &nbsp; How? Machine learning will help us to recognize.<br/><br/>
+            2. Now, you can look up the information about your pet.
+          </TabPane>
+          <TabPane tab="3" key="3">
+            <h1>Pending</h1><br/>
+            1. Someone enrolls a lost dog!<br/>
+            &ensp; &nbsp; Someone can be a shelter manager or a stranger who just found the dog on the road.<br/><br/>
+            2. He/She will fill out the offered finder blanks.
+          </TabPane>
+          <TabPane tab="4" key="4">
+            <h1>Find!</h1><br/>
+            1. If the picture finder enrolled matches with your dog, we will inform you.<br/><br/>
+            2. Did you find your precious family? Please write a review and thank finder for his/her careful concern.<br/><br/>
+          </TabPane>
+        </Tabs>
 
-        </div>
+        <br/><br/><br/>
+        {/*<Divider className={cx("side-wrapper")} />*/}
+
+        <Title level={3} className={cx("side-wrapper")}> I Found</Title>
+        <Tabs defaultActiveKey="1" onChange={callback} className={cx("side-wrapper")}>
+          <TabPane tab="1" key="1">
+            <h1>Register</h1><br/>
+            1. Register the found dog pictures on 'Register/I Found' tab.<br/>
+            &ensp; &nbsp; You should upload more than three.<br/><br/>
+            2. Please fill out the offered finder blanks.
+          </TabPane>
+          <TabPane tab="2" key="2">
+            <h1>In Progress</h1><br/>
+            1. Petective learns your pictures.<br/>
+            &ensp; &nbsp; How? Machine learning will help us to recognize.<br/><br/>
+            2. Now, you can look up the information about the dog.
+          </TabPane>
+          <TabPane tab="3" key="3">
+            <h1>Find!</h1><br/>
+            1. If the picture you uploaded matches with already enrolled dog, we will inform to the owner of the dog.<br/><br/>
+            2. You can confirm whether the dog went back to his family.<br/>
+            &ensp; &nbsp; Also you can see review the owner thanks to you.
+          </TabPane>
+        </Tabs>
       </Typography>
     )
   }
 }
+
+
+function callback(key) {
+  console.log(key);
+}
+
 function mapStateToProps(state) {
   const { authentication } = state;
   const { user } = authentication;

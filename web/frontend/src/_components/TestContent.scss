@@ -2,10 +2,10 @@ $color-background: #0e2327;
 $color-base: rgba(58, 174, 158, 1);
 $color-black: rgba(0, 0, 0, 1);
 $color-white: rgba(255, 255, 255, 1);
+@import '../_styles/utils.scss';
 
 .test-title {
     width: 210px;
-    margin: 0;
     display: inline-block;
 }
 .run-button {
@@ -23,4 +23,47 @@ $color-white: rgba(255, 255, 255, 1);
 }
 .progress-wrapper {
     margin-top: 10px;
+}
+.side-wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.button {
+    height : 30px;
+
+}
+
+.register-form {
+    margin-left: 20px;
+    margin-right: 20px;
+    svg {
+        color: rgba(240, 240, 240, 0.8);
+    }
+    input {
+        background: #f5f5f5;
+        border: 1px solid ghostwhite;
+        border-radius: 10px;
+        color: gray;
+        height: 30px;
+        &::placeholder {
+            color: rgba(240, 240, 240, 0.8);
+        }
+/*        &:not(:first-child) {
+            padding-left: 40px !important;
+        }*/
+        &:hover {
+            border: 1px solid $primary-color;
+        }
+        &:focus {
+            border: 1px solid $primary-color;
+        }
+    }
+    .pic{
+        border-radius: 5px !important;
+        border: 0px solid white;
+    }
+    .submit{
+        border: 1px solid ghostwhite;
+        border-radius: 5px;
+    }
 }
