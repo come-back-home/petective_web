@@ -1,7 +1,3 @@
-"""
-(c) 2019 Minwoo Choo All rights reserved. :: Petective
-"""
-
 import sys
 import os
 from dotenv import load_dotenv
