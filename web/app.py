@@ -1,7 +1,3 @@
-"""
-(c) 2019 Minwoo Choo All rights reserved. :: Petective
-"""
-
 import os
 import logger
 from datetime import datetime
