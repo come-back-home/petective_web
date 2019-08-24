@@ -51,3 +51,6 @@ class BaseConfig(object):
     APP_HOST = os.environ['APP_HOST']
     APP_PORT = os.environ['APP_PORT']
     LOGGER_ROOT_PATH = os.environ['LOGGER_ROOT_PATH']
+
+    IMAGE_URI = os.environ['IMAGE_URI']
+    SEQUENTIAL_IMAGE_URI = os.environ['SEQUENTIAL_IMAGE_URI']

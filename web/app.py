@@ -4,6 +4,8 @@
 
 import os
 import logger
+import base64
+from io import BytesIO
 from datetime import datetime
 from flask import (
     Flask, render_template, jsonify, request, abort,
@@ -18,13 +20,15 @@ from flask_jwt_extended import (
     JWTManager, create_access_token, create_refresh_token,
     jwt_required, jwt_refresh_token_required, get_jwt_identity,
     get_jti, get_raw_jwt)
+from werkzeug.datastructures import FileStorage
+
 from models import (
     db, User, LoginSession, Images, SequentialImages, Location, MyPet
 )
 from serializer import (
     UserSchema, LoginSessionSchema, LocationSchema
 )
-from config import BaseConfig
+from config import basedir, BaseConfig
 from utils import get_ip_address
 
 base_config = BaseConfig()
@@ -220,6 +224,33 @@ class UserRefresh(Resource):
         return jsonify({'ok': True, 'data': ret})
 
 
+class MyPetRegister(Resource):
+    def post(self):
+        data = request.get_json()
+        try:
+            user_id = data['user_id']
+            pet_name = data['name']
+            sex = data['sex']
+            breed = data['breed']
+            filename = data['filename']
+            b64image = data['base64image']
+            #b64video = data['base64video']
+            decoded_image = base64.b64decode(b64image)
+            #decoded_video = base64.b64decode(b64video)
+        except Exception as e:
+            abort(400, e)
+        file_data = BytesIO(decoded_image)
+        ####
+        # add video processing...
+        ####
+        image_dir = ""
+        filename = "{}_{}_{}".format(pet_name, sex, )
+        image_path = os.path.join(basedir, BaseConfig.IMAGE_URI)
+        file = FileStorage(file_data, filename=filename)
+        file.save(image_path)
+
+
+
 api.add_resource(UserList, '/api/users')
 api.add_resource(UserLogin, '/api/auth/login')
 api.add_resource(UserRegister, '/api/auth/register')
@@ -229,4 +260,4 @@ api.add_resource(UserRefresh, '/api/auth/refresh')
 if __name__ == '__main__':
     ip_address = get_ip_address()
     # app.run(host=ip_address, port=BaseConfig.APP_PORT)
-    app.run(host=BaseConfig.APP_HOST, port=BaseConfig.APP_PORT, debug=True, threaded=True)
+    app.ru
