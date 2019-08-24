@@ -5,8 +5,6 @@
 # Encryption with AES-CBC
 # Adapted to work with CryptoJS (crypto-js@3.1.9-1) with default configuration
 # Compatible with Korean
-#
-# 2018.7 Minwoo Choo (github: mwchoo)
 
 import hashlib
 import os
